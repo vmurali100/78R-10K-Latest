@@ -5,24 +5,60 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .mydata{
+        float: left;
+      }
+      .left{
+        width: 20%;
+      }
+      .right{
+        width: 80%;
+      }
+      #updateUserBtn{
+        display: none;
+      }
+    </style>
   </head>
   <body>
-    <button onclick="getDataFromServer()">Get Data</button>
-    <table border="1">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Username</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>Website</th>
-          <th>EDIT</th>
-          <th>DELETE</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+    <div class="mydata left">
+      <form action="">
+        <label for="id">id :</label>
+        <input type="text" name="" id="id" disabled> <br>
+        <label for="name">Name :</label>
+        <input type="text" name="" id="name"> <br>
+        <label for="username">Username :</label>
+        <input type="text" name="" id="username"> <br>
+        <label for="email">Email :</label>
+        <input type="text" name="" id="email"> <br>
+        <label for="phone">Phone :</label>
+        <input type="text" name="" id="phone"> <br>
+        <label for="website">Website :</label>
+        <input type="text" name="" id="website"> <br>
+        <br>
+        <button id="createUserBtn" type="button" onclick="createUser()" disabled>Create User</button>
+        <button id="updateUserBtn" onclick="updateUser()">Update User</button>
+      </form>
+    </div>
+    <div class="mydata right">
+      <table border="1">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Website</th>
+            <th>EDIT</th>
+            <th>DELETE</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <!-- <button onclick="getDataFromServer()">Get Data</button> -->
+   
     <script>
       var local_api_url = "http://localhost:3000/users/";
 
@@ -74,7 +110,28 @@ var users = []
         });
       }
 
-      function editUser() {}
+      function editUser(i) {
+        var userToBeEdited = users[i]
+        for(a in userToBeEdited){
+          if(a !== "company" && a !== "address"){
+            document.getElementById(a).value = userToBeEdited[a]
+          }
+        }
+        swapButtons(true)
+      }
+
+      function updateUser(){
+        var newUser = readValuesFromForm();
+        var createUser = new XMLHttpRequest()
+        createUser.onreadystatechange = function(){
+          if(createUser.readyState == 4 && createUser.status == 200){
+            getDataFromServer()
+          }
+        }
+        createUser.open("PUT",local_api_url+newUser.id)
+        createUser.setRequestHeader("Content-Type","application/json");
+        createUser.send(JSON.stringify(newUser))
+      }
 
       function deleteUser(i) {
         var delUser = new XMLHttpRequest();
@@ -85,6 +142,45 @@ var users = []
         };
         delUser.open("DELETE",local_api_url+users[i].id);
         delUser.send()
+      }
+
+      function createUser(){
+        var newUser = readValuesFromForm()
+        console.log(newUser)
+        var createUser = new XMLHttpRequest()
+        createUser.onreadystatechange = function(){
+          if(createUser.readyState == 4 && createUser.status == 201){
+            getDataFromServer()
+          }
+        }
+        createUser.open("POST",local_api_url)
+        createUser.setRequestHeader("Content-Type","application/json");
+        createUser.send(JSON.stringify(newUser))
+      }
+
+      function readValuesFromForm(){
+        var user = {
+          id:"",
+          name:"",
+          username:"",
+          email:"",
+          phone:"",
+          website:""
+        }
+        for(a in user){
+          user[a]=document.getElementById(a).value
+        }
+        return user
+      }
+
+      function swapButtons(val){
+        if(val){
+          document.getElementById("createUserBtn").style.display="none";
+          document.getElementById("updateUserBtn").style.display="block";
+        }else{
+          document.getElementById("createUserBtn").style.display="block";
+          document.getElementById("updateUserBtn").style.display="none";
+        }
       }
     </script>
   </body>
