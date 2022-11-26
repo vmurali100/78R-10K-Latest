@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <label for="fname">First Name :</label>
+      <input type="text" name="" id="fname" onkeyup="validateForm()" /> <br />
+      <label for="lname">Last Name : </label>
+      <input type="text" name="" id="lname" onkeyup="validateForm()" /> <br />
+      <label for="email">Email : </label>
+      <input type="text" name="" id="email" onkeyup="validateForm()" /> <br />
+      <button disabled>Add User</button>
+    </form>
+    <script>
+        //let , const, var
+        // Block scope 
+        // lexical Scope
+      function validateForm() {
+        var user = {
+          fname: "",
+          lname: "",
+          email: "",        };
+        for (var a in user) {
+          user[a] = document.getElementById(a).value;
+        }
+        var check = false;
+
+        // if(user.fname.length< 6 || user.lname.length < 3){
+        //     // This line will excute only fname is less than 6 And lname is less than 3
+        //     check=false
+        // }
+        var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (
+          user.fname.length >= 6 &&
+          user.lname.length >= 3 &&
+          emailPattern.test(user[a])
+        ) {
+          check = true;
+        }
+
+        if (check) {
+          document.querySelector("button").removeAttribute("disabled");
+        } else {
+          document.querySelector("button").setAttribute("disabled", true);
+        }
+      }
+    </script>
+  </body>
+</html>

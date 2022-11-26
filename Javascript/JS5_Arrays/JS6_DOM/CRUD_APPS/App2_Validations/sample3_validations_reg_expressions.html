@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Regular Expressions</h2>
+
+<p>Do a multiline search for "is" at the beginning of each line in a string:</p>
+
+<p id="demo"></p>
+
+<script>
+let text = `Do a multiline search for is at the beginning of each line in a string,
+Do a multiline search for is at the beginning of each line in a string,
+is Do a multiline search for is at the beginning of each line in a string:`
+
+let pattern = /^is/m;
+let result = text.match(pattern);
+document.getElementById("demo").innerHTML = result;
+</script>
+
+</body>
+</html>
