@@ -59,12 +59,20 @@ export default class Person extends Component {
   };
 
   deleteUser = (usr) => {
-    var latestUsers = this.state.allUsers.filter(
-      (myUser) => myUser.email !== usr.email
-    );
-    this.setState({ allUsers: latestUsers });
+    // var latestUsers = this.state.allUsers.filter(
+    //   (myUser) => myUser.email !== usr.email
+    // );
+    // this.setState({ allUsers: latestUsers });
+    // axios.delete("http://localhost:3201/users/"+id).then(()=>{
+    //   this.getAllUser()
+    // })
   };
 
+  getAllUser=()=>{
+    // axios.get("http://localhost:3201/users/").then(res=>{
+    //   this.setState({allUsers:res.data})
+    // })
+  }
   updateUser = () => {
     var latestUsers = [...this.state.allUsers];
     latestUsers[this.state.editIndex] = this.state.person;
