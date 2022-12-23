@@ -1,5 +1,5 @@
 {
-  "name": "react-spa-crud",
+  "name": "react-spa-auth",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
