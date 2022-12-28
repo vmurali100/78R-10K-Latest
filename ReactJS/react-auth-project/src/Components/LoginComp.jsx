@@ -1,11 +1,29 @@
 import React from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "./Auth";
 
 const LoginComp = () => {
-  const { user } = useAuth();
+  const [userName, setUser] = useState("");
+  const { user,login } = useAuth();
+  const navigate = useNavigate()
+  const handleLogin = ()=>{
+    login(userName);
+    navigate('/products')
+  }
   return (
     <div>
-      <h2>User Name :{user.fname} </h2>
+      <form>
+        <input
+          type="text"
+          value={userName}
+          onChange={(e) => {
+            setUser(e.target.value);
+          }}
+        />{" "}
+        <button type="button" onClick={handleLogin}>Login</button>
+      </form>
+      <p style={{color:"red"}}>Please login to View the Prodcts !!</p>
     </div>
   );
 };

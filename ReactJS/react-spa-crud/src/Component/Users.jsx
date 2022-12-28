@@ -10,7 +10,9 @@ const Users = () => {
   }, []);
 
   const getAllUsers = async () => {
-    const response = await (await fetch("http://localhost:3201/users")).json();
+    let api_url="https://jsonplaceholder.typicode.com/users"
+    const response = await (await fetch(api_url)).json();
+    console.log(response)
     setUsers(response);
   };
   return (

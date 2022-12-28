@@ -8,7 +8,7 @@ const Navbar = () => {
         {/* <a className="navbar-brand" href="#">
           Navbar
         </a> */}
-        <Link className="navbar-brand" to={'/'}>Navbar</Link>
+        <Link className="navbar-brand" to={'/sample'}>Navbar</Link>
         <button
           className="navbar-toggler"
           type="button"

@@ -14,8 +14,8 @@ const User = ({ usr }) => {
   return (
     <tr>
       <td>{usr.id}</td>
-      <td>{usr.fname}</td>
-      <td>{usr.lname}</td>
+      <td>{usr.name}</td>
+      <td>{usr.username}</td>
       <td>{usr.email}</td>
       <td>{usr.password}</td>
       <td>

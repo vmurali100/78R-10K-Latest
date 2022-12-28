@@ -1,14 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "./Auth";
 
 const Navbar = () => {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+  console.log(user);
+  const handleLogout = () => {
+    console.log("logout called");
+    logout();
+    navigate("/");
+  };
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container-fluid">
-        {/* <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" to={"/"}>
           Navbar
-        </a> */}
-        <Link className="navbar-brand" to={'/'}>Navbar</Link>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -22,7 +30,16 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-           <Link to={'create'} className="nav-link">Create User</Link>
+            {user ? (
+              <li className="nav-link" onClick={handleLogout}>Logout</li>
+            ) : (
+              <li >
+                <Link className="nav-link" to={'/'}>Login</Link>
+              </li>
+            )}
+             <li >
+                <Link className="nav-link" to={'/products'}>Products</Link>
+              </li>
           </div>
         </div>
       </div>
