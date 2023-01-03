@@ -5,38 +5,12 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
+import { reducer } from "./store/Reducer";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 // How to Create a store
 // Super Market
 // To Create a Store .. A business Logic has to be created - This Business logic Function is called Reducer !!!
-const defaultState = {
-  users: ["Murali", "Krishna", "Ram", "Ravi"],
-  employees: [],
-  products: [],
-  books: [],
-};
-
-const reducer = (state = defaultState, action) => {
-  switch (action.type) {
-    case "ADDUSER":
-      let newUsers = [...state.users]
-      newUsers.push(action.paload)
-      return {...state,users:newUsers}
-    case "DELETEUSER":
-      let updatedUsers = state.users.filter((user)=>user !== action.paload);
-      return {...state,users:updatedUsers}
-
-    default:
-      return state;
-  }
-  // Create a User
-  // Read a User
-  // update a User
-  // delete a User
-};
-
 const store = createStore(reducer);
-console.log(store);
 // store.dispatch(addUserAction())
 root.render(
   <React.StrictMode>
