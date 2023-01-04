@@ -91,57 +91,9 @@
         "catchPhrase": "Multi-tiered zero tolerance productivity",
         "bs": "transition cutting-edge web services"
       }
-    },
-    {
-      "id": 5,
-      "name": "Chelsey Dietrich",
-      "username": "Kamren",
-      "email": "Lucio_Hettinger@annie.ca",
-      "address": {
-        "street": "Skiles Walks",
-        "suite": "Suite 351",
-        "city": "Roscoeview",
-        "zipcode": "33263",
-        "geo": {
-          "lat": "-31.8129",
-          "lng": "62.5342"
-        }
-      },
-      "phone": "(254)954-1289",
-      "website": "demarco.info",
-      "company": {
-        "name": "Keebler LLC",
-        "catchPhrase": "User-centric fault-tolerant solution",
-        "bs": "revolutionize end-to-end systems"
-      }
-    },
-    {
-      "id": 6,
-      "name": "Mrs. Dennis Schulist",
-      "username": "Leopoldo_Corkery",
-      "email": "Karley@jasper.info",
-      "phone": "1-477-935-8478",
-      "website": "ola.org"
-    },
-    {
-      "id": 7,
-      "name": "Murali",
-      "username": "murali.veesambattu",
-      "email": "murali@gmail.com",
-      "phone": "7760355535",
-      "website": "abcd"
-    },
-    {
-      "id": 8,
-      "name": "Ram Kumar",
-      "username": "Ravi",
-      "email": "ram@gmail.com",
-      "phone": "9663856625",
-      "website": "sanoke"
     }
   ],
-
-  "products":[],
-  "studets":[],
-  "emaployees":[]
+  "products": [],
+  "studets": [],
+  "emaployees": []
 }
