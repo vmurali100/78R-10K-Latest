@@ -3,7 +3,7 @@
     {
       "email": "vmurali100@gmail.com",
       "id": 1,
-      "fname": "Murali",
+      "fname": "Murali VMR",
       "lname": "Krishna"
     },
     {
@@ -19,10 +19,16 @@
       "id": 3
     },
     {
-      "fname": "Kiran",
-      "lname": "Kumar",
-      "email": "kiran@gmail.com",
+      "fname": "Pradeep",
+      "lname": "Kuamr",
+      "email": "pradeep@gmail.com",
       "id": 4
+    },
+    {
+      "fname": "mmm",
+      "lname": "Ravi",
+      "email": "Ram@gmail.com",
+      "id": 5
     }
   ]
 }
