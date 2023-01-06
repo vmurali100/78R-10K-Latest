@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addUserAction, deleteUserAction, updateUserAction } from "../store/actions/usersAction";
+import { addUserAction, addUsersAsyncAction, deleteUserAction, deleteUsersAsyncAction, getUsersAsyncAction, updateUserAction, updateUsersAsyncAction } from "../store/actions/usersAction";
 
 class UsersClassComp extends Component {
   constructor(props) {
@@ -21,7 +21,8 @@ class UsersClassComp extends Component {
     this.setState({ user: newUser });
   };
   handleSubmit = () => {
-    this.props.addUser(this.state.user);
+    // this.props.addUser(this.state.user);
+    this.props.addUserAsync(this.state.user)
     this.clearForm();
   };
   clearForm = () => {
@@ -34,16 +35,20 @@ class UsersClassComp extends Component {
     });
   };
   handleDelete = (user) => {
-    this.props.deleteUser(user);
+    // this.props.deleteUser(user);
+    this.props.deleteUserAsync(user)
   };
   handleEdit = (user) => {
     this.setState({ user,isEdit:true });
   };
   handleUpdate=()=>{
-    this.props.updateUser(this.state.user);
+    this.props.updateUserAsync(this.state.user)
+    // this.props.updateUser(this.state.user);
     this.clearForm()
     this.setState({isEdit:false });
-
+  }
+  componentDidMount(){
+    this.props.getUsers()
   }
   render() {
     const { fname, lname, email } = this.state.user;
@@ -146,7 +151,11 @@ function mapDispatchToProps(dispatch) {
   return {
     addUser: (user) => dispatch(addUserAction(user)),
     deleteUser: (user) => dispatch(deleteUserAction(user)),
-    updateUser:(user)=>dispatch(updateUserAction(user))
+    updateUser:(user)=>dispatch(updateUserAction(user)),
+    getUsers:()=>dispatch(getUsersAsyncAction()),
+    addUserAsync:(user)=>dispatch(addUsersAsyncAction(user)),
+    deleteUserAsync:(user)=>dispatch(deleteUsersAsyncAction(user)),
+    updateUserAsync:(user)=>dispatch(updateUsersAsyncAction(user))
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(UsersClassComp);
